@@ -2,14 +2,16 @@ import { ReactElement, createElement, useCallback, useMemo } from "react";
 import { Pressable, Text, View } from "react-native";
 
 import { CustomStyle } from "src/ui/styles";
+import { e2eID } from "../utils";
 
 export interface PinInputButtonProps {
+    testID: string;
     caption: string;
     style: CustomStyle;
     onClick: (value: string) => void;
 }
 
-export function PinInputButton({ caption, style, onClick }: PinInputButtonProps): ReactElement {
+export function PinInputButton({ testID, caption, style, onClick }: PinInputButtonProps): ReactElement {
     const onClickHandler = useCallback((): void => {
         onClick(caption);
     }, [caption, onClick]);
@@ -22,5 +24,16 @@ export function PinInputButton({ caption, style, onClick }: PinInputButtonProps)
         );
     }, [caption, style]);
 
-    return <Pressable onPress={() => onClickHandler()}>{renderView}</Pressable>;
+    return (
+        <Pressable
+            {...(!testID && {
+                accessibilityRole: "button",
+                accessibilityLabel: caption
+            })}
+            {...(testID && e2eID(testID))}
+            onPress={() => onClickHandler()}
+        >
+            {renderView}
+        </Pressable>
+    );
 }

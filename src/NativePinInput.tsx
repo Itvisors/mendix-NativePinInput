@@ -6,8 +6,10 @@ import { mergeNativeStyles } from "@mendix/pluggable-widgets-tools";
 import { PinInputButton } from "./components/PinInputButton";
 import { ValueStatus } from "mendix";
 import { DeleteButton } from "./components/DeleteButton";
+import { e2eID } from "./utils";
 
 export function NativePinInput({
+    name,
     style,
     dataAttr,
     maxLength,
@@ -15,7 +17,11 @@ export function NativePinInput({
     darkMode,
     buttonStyle,
     onChangeAction,
-    onInputCompleteAction
+    onInputCompleteAction,
+    testID,
+    accessibilityLabel,
+    accessibilityHint,
+    deleteBtnAccessibilityLabel
 }: NativePinInputProps<CustomStyle>): ReactElement {
     const deviceDarkMode = Appearance.getColorScheme() === "dark";
 
@@ -110,30 +116,45 @@ export function NativePinInput({
     }, [mergedStyle, dataAttr.validation]);
 
     return (
-        <View style={mergedStyle.container}>
+        <View
+            {...(!accessibilityLabel && e2eID(testID))}
+            {...(!testID &&
+                accessibilityLabel && {
+                    accessible: true,
+                    accessibilityHint,
+                    accessibilityLabel
+                })}
+            style={mergedStyle.container}
+        >
             <View style={mergedStyle.valueRow}>
                 <TextInput editable={false} style={mergedStyle.readonlyText} value={displayValue} secureTextEntry />
                 {renderValidation}
             </View>
             <View style={mergedStyle.buttonRow}>
-                <PinInputButton caption="1" style={mergedStyle} onClick={onClick} />
-                <PinInputButton caption="2" style={mergedStyle} onClick={onClick} />
-                <PinInputButton caption="3" style={mergedStyle} onClick={onClick} />
+                <PinInputButton testID={`${testID}$button$1`} caption="1" style={mergedStyle} onClick={onClick} />
+                <PinInputButton testID={`${testID}$button$2`} caption="2" style={mergedStyle} onClick={onClick} />
+                <PinInputButton testID={`${testID}$button$3`} caption="3" style={mergedStyle} onClick={onClick} />
             </View>
             <View style={mergedStyle.buttonRow}>
-                <PinInputButton caption="4" style={mergedStyle} onClick={onClick} />
-                <PinInputButton caption="5" style={mergedStyle} onClick={onClick} />
-                <PinInputButton caption="6" style={mergedStyle} onClick={onClick} />
+                <PinInputButton testID={`${testID}$button$4`} caption="4" style={mergedStyle} onClick={onClick} />
+                <PinInputButton testID={`${testID}$button$5`} caption="5" style={mergedStyle} onClick={onClick} />
+                <PinInputButton testID={`${testID}$button$6`} caption="6" style={mergedStyle} onClick={onClick} />
             </View>
             <View style={mergedStyle.buttonRow}>
-                <PinInputButton caption="7" style={mergedStyle} onClick={onClick} />
-                <PinInputButton caption="8" style={mergedStyle} onClick={onClick} />
-                <PinInputButton caption="9" style={mergedStyle} onClick={onClick} />
+                <PinInputButton testID={`${testID}$button$7`} caption="7" style={mergedStyle} onClick={onClick} />
+                <PinInputButton testID={`${testID}$button$8`} caption="8" style={mergedStyle} onClick={onClick} />
+                <PinInputButton testID={`${testID}$button$9`} caption="9" style={mergedStyle} onClick={onClick} />
             </View>
             <View style={mergedStyle.buttonRow}>
                 <View style={mergedStyle.emptyContainer}></View>
-                <PinInputButton caption="0" style={mergedStyle} onClick={onClick} />
-                <DeleteButton deleteButtonIcon={deleteButtonIcon} style={mergedStyle} onClick={onDeleteClick} />
+                <PinInputButton testID={name} caption="0" style={mergedStyle} onClick={onClick} />
+                <DeleteButton
+                    {...(!accessibilityLabel && e2eID(`${testID}$delete`))}
+                    {...(!testID && { accessibilityLabel: deleteBtnAccessibilityLabel })}
+                    deleteButtonIcon={deleteButtonIcon}
+                    style={mergedStyle}
+                    onClick={onDeleteClick}
+                />
             </View>
         </View>
     );
