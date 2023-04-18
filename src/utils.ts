@@ -1,13 +1,13 @@
-import {Platform} from "react-native";
+import { Platform } from "react-native";
 
 export function e2eID(id?: string) {
-    if (Platform.OS === 'android') {
+    if (Platform.OS === "android") {
         return {
             accessibilityLabel: id,
-            accessible: true,
+            accessible: true
         };
     }
     return {
-        testID: id,
+        testID: id
     };
 }
