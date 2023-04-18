@@ -27,7 +27,7 @@ export function DeleteButton({
                 : { type: "glyph", iconClass: defaultIconGlyph };
         // Do not apply styling to pressable, but to the child view
         return (
-            <View style={style.deleteButtonTouchable} accessible={true}>
+            <View style={style.deleteButtonTouchable} accessible>
                 <Icon color={style.icon.color as string} icon={nativeIcon} size={style.icon.fontSize} />
             </View>
         );
@@ -37,7 +37,7 @@ export function DeleteButton({
         <Pressable
             {...(!testID && {
                 accessibilityRole: "button",
-                accessibilityLabel: accessibilityLabel
+                accessibilityLabel
             })}
             {...(!accessibilityLabel && { testID })}
             onPress={() => onClick()}
