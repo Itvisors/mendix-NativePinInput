@@ -54,8 +54,7 @@
         <propertyGroup caption="Events">
             <property key="onChangeAction" type="action" required="false">
                 <caption>On change action</caption>
-                <description
-                >Action to trigger when value changes, called for every addition or deletion of a digit</description>
+                <description>Action to trigger when value changes, called for every addition or deletion of a digit</description>
             </property>
             <property key="onInputCompleteAction" type="action" required="false">
                 <caption>Input complete action</caption>
