@@ -68,16 +68,16 @@
                 <description>Test ID</description>
             </property>
             <property key="accessibilityLabel" type="string" required="false">
-                <caption>Accessibility label</caption>
+                <caption>Label</caption>
                 <description>Accessibility label</description>
             </property>
             <property key="accessibilityHint" type="string" required="false">
-                <caption>Accessibility hint</caption>
+                <caption>Hint</caption>
                 <description>Accessibility hint</description>
             </property>
             <property key="deleteBtnAccessibilityLabel" type="string" required="false">
-                <caption>Accessibility label</caption>
-                <description>Accessibility label</description>
+                <caption>Delete button label</caption>
+                <description>Delete Button Accessibility label</description>
             </property>
         </propertyGroup>
     </properties>
