@@ -1,5 +1,5 @@
 import { createElement, ReactElement, useEffect, useMemo, useState } from "react";
-import { Appearance, Text, View, TextInput } from "react-native";
+import { Platform, Appearance, Text, View, TextInput } from "react-native";
 import { NativePinInputProps } from "../typings/NativePinInputProps";
 import { circleStyles, numKeyboardStyles, darkStyles, lightStyles, CustomStyle, defaultStyle } from "./ui/styles";
 import { mergeNativeStyles } from "@mendix/pluggable-widgets-tools";
@@ -112,7 +112,7 @@ export function NativePinInput(props: NativePinInputProps<CustomStyle>): ReactEl
     return (
         <View
             style={mergedStyle.container}
-            accessible
+            accessible={Platform.OS === 'ios' ? false : true}
             accessibilityLabel={props.a11yLabel?.value}
             accessibilityHint={props.a11yHint?.value}
             testID={props.name}
