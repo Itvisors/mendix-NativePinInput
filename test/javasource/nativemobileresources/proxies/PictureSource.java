@@ -6,8 +6,8 @@ package nativemobileresources.proxies;
 
 public enum PictureSource
 {
-	camera("e02e056f-c9f1-42d2-af83-0591d983267e"),
-	imageLibrary("98182a6e-4fbc-417e-9257-5dc04d8a92f8");
+	camera("dc739b91-5e40-464b-9994-1827f3abb081"),
+	imageLibrary("0db38455-75c1-46a2-90fa-da9d7a41ba27");
 
 	private final java.lang.String i18nCaptionKey;
 	

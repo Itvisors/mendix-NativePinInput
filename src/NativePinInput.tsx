@@ -1,4 +1,4 @@
-import { createElement, ReactElement, useEffect, useMemo, useState } from "react";
+import { ReactElement, useMemo, useState } from "react";
 import { Appearance, Text, View, TextInput } from "react-native";
 import { NativePinInputProps } from "../typings/NativePinInputProps";
 import { circleStyles, numKeyboardStyles, darkStyles, lightStyles, CustomStyle, defaultStyle } from "./ui/styles";
@@ -14,6 +14,12 @@ export function NativePinInput(props: NativePinInputProps<CustomStyle>): ReactEl
     const [displayValue, setDisplayValue] = useState<string>("");
 
     const { style, dataAttr, maxLength } = props;
+
+    // Adjusting state during render: clear local state when the attribute value is cleared externally
+    if (textValue && dataAttr && !dataAttr.value) {
+        setTextValue("");
+        setDisplayValue("");
+    }
 
     // Insert additional styles based on properties.
     // These must be placed at the top of the array, using unshift, to allow overrule by project theme styles and design properties.
@@ -40,13 +46,6 @@ export function NativePinInput(props: NativePinInputProps<CustomStyle>): ReactEl
         styleArray.unshift(numKeyboardStyles);
     }
     const mergedStyle: CustomStyle = mergeNativeStyles(defaultStyle, styleArray);
-
-    useEffect(() => {
-        if (textValue && dataAttr && !dataAttr.value) {
-            setTextValue("");
-            setDisplayValue("");
-        }
-    }, [dataAttr, textValue]);
 
     const onClick = (value: string): void => {
         if (!dataAttr || dataAttr.status !== ValueStatus.Available) {

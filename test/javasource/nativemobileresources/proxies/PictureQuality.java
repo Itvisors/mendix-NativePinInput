@@ -6,11 +6,11 @@ package nativemobileresources.proxies;
 
 public enum PictureQuality
 {
-	original("e0833a22-9613-4166-836b-ef9233952f13"),
-	low("9a51bb7c-a990-4f0c-ac64-4d6647317a77"),
-	medium("a3a2fa6c-d707-4c35-b6d1-971c51856583"),
-	high("0f40dab6-b0be-4d56-8ff7-9c59fe5c9724"),
-	custom("ae6d1c0c-680e-4f33-914b-76116dd8d969");
+	original("e2bcc841-9c4f-4f18-91bf-ae9b25730892"),
+	low("fc887e01-f243-4140-9378-e5c591d15bfd"),
+	medium("d0861ea8-d734-45d2-b565-cf2ed079ab0f"),
+	high("5c8f90fc-8e98-4b71-a244-14d2d865d1f7"),
+	custom("ed63273a-7c6e-403a-adf4-71b03faae899");
 
 	private final java.lang.String i18nCaptionKey;
 	

@@ -3,8 +3,8 @@
  * WARNING: All changes made to this file will be overwritten
  * @author Mendix Widgets Framework Team
  */
-import { CSSProperties } from "react";
 import { ActionValue, DynamicValue, EditableValue, NativeIcon } from "mendix";
+import { CSSProperties } from "react";
 
 export type DarkModeEnum = "device" | "dark" | "light";
 
@@ -38,7 +38,11 @@ export interface NativePinInputPreviewProps {
     translate: (text: string) => string;
     dataAttr: string;
     maxLength: number | null;
-    deleteButtonIcon: { type: "glyph"; iconClass: string; } | { type: "image"; imageUrl: string; iconUrl: string; } | { type: "icon"; iconClass: string; } | undefined;
+    deleteButtonIcon:
+        | { type: "glyph"; iconClass: string }
+        | { type: "image"; imageUrl: string; iconUrl: string }
+        | { type: "icon"; iconClass: string }
+        | undefined;
     darkMode: DarkModeEnum;
     buttonStyle: ButtonStyleEnum;
     onChangeAction: {} | null;

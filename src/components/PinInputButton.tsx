@@ -1,4 +1,4 @@
-import { ReactElement, createElement, useCallback, useState } from "react";
+import { ReactElement, useCallback, useState } from "react";
 import { Pressable, Text, View } from "react-native";
 
 import { CustomStyle } from "src/ui/styles";
